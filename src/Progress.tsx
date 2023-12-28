@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 
 const Progress = () => {
   const [count, setCount] = useState<number>(0);
-  const strokeWidth = 10;
-  const radius = 50 - strokeWidth / 2;
-  const circumference = 2 * Math.PI * radius;
-  const progressValue = circumference - (count / 100) * circumference;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,22 +19,13 @@ const Progress = () => {
     <div>
       <progress
         value={count}
-        max="100"
-        className="absolute left-[-9999px] w-1 h-1 overflow-hidden"
+        max={100}
+        aria-valuemin={0}
+        className="[&::-webkit-progress-bar]:rounded-lg [&::-webkit-progress-value]:rounded-lg   [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-violet-400 [&::-moz-progress-bar]:bg-violet-400 [&::-webkit-progress-inner-element]:rounded-lg"
       />
-      <svg>
-        <circle
-          className="stroke-current text-blue-500"
-          strokeWidth={strokeWidth}
-          strokeDasharray={circumference}
-          strokeDashoffset={progressValue}
-          strokeLinecap="round"
-          fill="transparent"
-          r={radius}
-          cx={50}
-          cy={50}
-        />
-      </svg>
+      <div role="status" aria-atomic="true">
+        <p>{count}</p>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,24 @@
+.progress-circle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-circle .count {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+}
+
+.progress {
+  transition: stroke-dashoffset 0.3s ease;
+}
