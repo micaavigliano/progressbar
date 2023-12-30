@@ -8,7 +8,7 @@ const Progress = () => {
       if (count < 100) {
         setCount((prev) => prev + 1);
       }
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
@@ -21,10 +21,11 @@ const Progress = () => {
         value={count}
         max={100}
         aria-valuemin={0}
+        title={"Progress bar with native html tag"}
         className="[&::-webkit-progress-bar]:rounded-lg [&::-webkit-progress-value]:rounded-lg   [&::-webkit-progress-bar]:bg-slate-300 [&::-webkit-progress-value]:bg-violet-400 [&::-moz-progress-bar]:bg-violet-400 [&::-webkit-progress-inner-element]:rounded-lg"
       />
       <div role="status" aria-atomic="true">
-        <p>{count}</p>
+        <p>{count}%</p>
       </div>
     </div>
   );

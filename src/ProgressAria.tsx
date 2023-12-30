@@ -22,36 +22,45 @@ const CircleProgressBar = () => {
   const offset = circumference - (progress / 100) * circumference;
 
   return (
-    <div
-      className="progress-circle"
-      role="progressbar"
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuenow={progress}
-    >
-      <svg className="svg" width={radius * 2} height={radius * 2}>
-        <circle
-          className="progress"
-          cx={radius}
-          cy={radius}
-          r={radius - strokeWidth / 2}
-          stroke="lightgray"
-          strokeWidth={strokeWidth}
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          fill="transparent"
-        />
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fill="white"
-        >
-          {progress}%
-        </text>
-      </svg>
-    </div>
+    <>
+      <label htmlFor="id-progress">Progressbar with aria</label>
+      <div
+        className="progress-circle"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={progress}
+        id="id-progress"
+      >
+        <svg className="svg" width={radius * 2} height={radius * 2}>
+          <circle
+            className="progress"
+            cx={radius}
+            cy={radius}
+            r={radius - strokeWidth / 2}
+            stroke="lightgray"
+            strokeWidth={strokeWidth}
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            fill="transparent"
+          />
+          <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="white"
+            role="status"
+            aria-atomic="true"
+          >
+            {progress}%
+          </text>
+        </svg>
+      </div>
+      <div role="status" aria-live="assertive">
+        {progress}
+      </div>
+    </>
   );
 };
 
